@@ -11,7 +11,8 @@ export default function WorkoutCard({ workout }: WorkoutCardProps) {
   return (
     <Link
       href={`/workouts/${workout.id}`}
-      className="group block overflow-hidden rounded-lg border border-[#20242b] bg-[#111318] transition hover:border-[#3b424d]"
+      aria-label={`View ${workout.name} workout details`}
+      className="group block overflow-hidden rounded-lg border border-[#20242b] bg-[#111318] transition hover:border-[#3b424d] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#C2F800]"
     >
       <div className="relative h-[210px] overflow-hidden bg-[#15181e] sm:h-[220px]">
         <Image
