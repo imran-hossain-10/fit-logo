@@ -37,6 +37,7 @@ export default function Navbar() {
         <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 md:flex">
           <Link
             href="/#library"
+            aria-current={isWorkoutPage ? "page" : undefined}
             className={`rounded-full px-5 py-2.5 text-[18px] transition ${
               isWorkoutPage
                 ? "bg-[#1A2312] text-[#C2F800]"
@@ -48,6 +49,7 @@ export default function Navbar() {
 
           <Link
             href="/my-plan"
+            aria-current={isPlanPage ? "page" : undefined}
             className={`rounded-full px-5 py-2.5 text-[18px] transition ${
               isPlanPage
                 ? "bg-[#1A2312] text-[#C2F800]"
