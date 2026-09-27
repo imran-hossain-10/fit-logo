@@ -34,7 +34,7 @@ export default function Navbar() {
           </span>
         </Link>
 
-        <nav className="absolute left-1/2 flex -translate-x-1/2 items-center gap-2">
+        <nav className="absolute left-1/2 hidden -translate-x-1/2 items-center gap-2 md:flex">
           <Link
             href="/#library"
             className={`rounded-full px-5 py-2.5 text-[18px] transition ${
@@ -58,12 +58,12 @@ export default function Navbar() {
           </Link>
         </nav>
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center gap-2 sm:gap-5">
           <Link
             href="/my-plan"
             className="flex items-center gap-2 text-[18px] text-white"
           >
-            <span>Plan</span>
+            <span className="hidden sm:inline">Plan</span>
 
             <span className="flex h-6 min-w-6 items-center justify-center rounded-full bg-[#C2F800] px-1 text-[12px] font-bold text-[#090a0d]">
               {plan.length}
@@ -74,7 +74,7 @@ export default function Navbar() {
             href="/my-plan"
             className="flex items-center gap-2 text-[18px] text-white"
           >
-            <span>Saved</span>
+            <span className="hidden sm:inline">Saved</span>
 
             <span className="flex h-6 min-w-6 items-center justify-center rounded-full border border-[#343942] px-1 text-[12px] text-[#858b96]">
               {saved.length}
