@@ -21,21 +21,33 @@ interface FitLogContextType {
 
 const FitLogContext = createContext<FitLogContextType | undefined>(undefined);
 
+function readWorkoutList(key: string): Workout[] {
+  try {
+    const value: unknown = JSON.parse(localStorage.getItem(key) ?? "null");
+
+    if (!Array.isArray(value)) {
+      return [];
+    }
+
+    return value.filter(
+      (item): item is Workout =>
+        item !== null &&
+        typeof item === "object" &&
+        typeof item.id === "number" &&
+        typeof item.name === "string",
+    );
+  } catch {
+    return [];
+  }
+}
+
 export function FitLogProvider({ children }: { children: ReactNode }) {
   const [plan, setPlan] = useState<Workout[]>([]);
   const [saved, setSaved] = useState<Workout[]>([]);
 
   useEffect(() => {
-    const planData = localStorage.getItem("fitlog-plan");
-    const savedData = localStorage.getItem("fitlog-saved");
-
-    if (planData) {
-      setPlan(JSON.parse(planData));
-    }
-
-    if (savedData) {
-      setSaved(JSON.parse(savedData));
-    }
+    setPlan(readWorkoutList("fitlog-plan"));
+    setSaved(readWorkoutList("fitlog-saved"));
   }, []);
 
   useEffect(() => {
