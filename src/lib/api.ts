@@ -22,6 +22,7 @@ const API_URLS = [
 async function fetchWorkouts(url: string) {
   const response = await fetch(url, {
     cache: "no-store",
+    signal: AbortSignal.timeout(8000),
   });
 
   if (!response.ok) {
