@@ -45,6 +45,10 @@ export async function getWorkouts(): Promise<Workout[]> {
 }
 
 export async function getWorkout(id: string): Promise<Workout> {
+  if (!/^\d+$/.test(id)) {
+    throw new Error("Invalid workout id");
+  }
+
   for (const url of API_URLS) {
     try {
       return await fetchWorkouts(`${url}/${id}`);
